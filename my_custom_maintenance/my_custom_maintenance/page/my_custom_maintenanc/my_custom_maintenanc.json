@@ -1,0 +1,23 @@
+{
+ "content": null,
+ "creation": "2021-12-17 16:39:53.298189",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2021-12-17 16:41:17.674014",
+ "modified_by": "Administrator",
+ "module": "My Custom Maintenance",
+ "name": "my-custom-maintenanc",
+ "owner": "Administrator",
+ "page_name": "My Custom Maintenance",
+ "roles": [
+  {
+   "role": "All"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "My Custom Maintenance"
+}
