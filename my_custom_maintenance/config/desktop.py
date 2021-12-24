@@ -10,7 +10,7 @@ def get_data():
 			"color": "labc9c",
 			"icon": "fa fa-cogs",
 			"type": "module",
-			"label": _("Maintenance"),
+			"label": _("SHRDC CMMS"),
 			"description":"Downtime Tracking, Corrective and Preventive Maintenance."
 		}
 	]

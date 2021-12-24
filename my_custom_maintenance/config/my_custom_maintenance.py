@@ -12,6 +12,16 @@ def get_data():
                     "onboard": 1
                 }
             ]
+		},
+		{
+            "label": _("Maintenance"),
+            "items":[
+                {
+                    "type": "doctype",
+                    "name": "Maintenance Work Order",
+                    "onboard": 1
+                }
+            ]
 		}
 	]
     return config
