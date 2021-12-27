@@ -12,14 +12,31 @@
   "column_break_3",
   "asset",
   "asset_location",
+  "reference_section",
+  "raised_by",
+  "column_break_9",
+  "maintenance_work_request",
   "section_break_5",
-  "description",
+  "maintenance_team",
   "maintenance_type",
   "maintenance_priority",
+  "column_break_15",
+  "maintenance_intervals",
+  "assign_to",
+  "parts_and_tooling_section",
+  "parts_required",
+  "column_break",
+  "tools_required",
+  "section_break_12",
   "created_on",
   "due_date",
+  "column_break_16",
   "completed_on",
   "closed_date",
+  "section_break_17",
+  "problems_identified",
+  "actions_taken_to_resolve",
+  "general_notes",
   "amended_from"
  ],
  "fields": [
@@ -35,7 +52,8 @@
    "fieldname": "asset",
    "fieldtype": "Link",
    "label": "Asset",
-   "options": "Asset"
+   "options": "Asset",
+   "reqd": 1
   },
   {
    "fetch_from": "asset.location",
@@ -68,12 +86,8 @@
   },
   {
    "fieldname": "section_break_5",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Text",
-   "label": "Description"
+   "fieldtype": "Section Break",
+   "label": "Maintenance Details"
   },
   {
    "fieldname": "maintenance_type",
@@ -90,6 +104,7 @@
    "options": "Low\nMedium\nHigh"
   },
   {
+   "default": "now",
    "fieldname": "created_on",
    "fieldtype": "Datetime",
    "label": "Created On"
@@ -97,7 +112,8 @@
   {
    "fieldname": "due_date",
    "fieldtype": "Datetime",
-   "label": "Due Date"
+   "label": "Due Date",
+   "reqd": 1
   },
   {
    "fieldname": "completed_on",
@@ -108,10 +124,106 @@
    "fieldname": "closed_date",
    "fieldtype": "Datetime",
    "label": "Closed Date"
+  },
+  {
+   "fieldname": "maintenance_team",
+   "fieldtype": "Link",
+   "label": "Maintenance Team",
+   "options": "Asset Maintenance Team",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assign_to",
+   "fieldtype": "Link",
+   "label": "Assign To",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "raised_by",
+   "fieldtype": "Link",
+   "label": "Raised By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break",
+   "label": "Timing Details"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_17",
+   "fieldtype": "Section Break",
+   "label": "Additional Description"
+  },
+  {
+   "fieldname": "parts_and_tooling_section",
+   "fieldtype": "Section Break",
+   "label": "Parts and Tooling"
+  },
+  {
+   "fieldname": "parts_required",
+   "fieldtype": "Small Text",
+   "label": "Parts Required"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tools_required",
+   "fieldtype": "Small Text",
+   "label": "Tools Required"
+  },
+  {
+   "fieldname": "problems_identified",
+   "fieldtype": "Text",
+   "label": "Problems Identified"
+  },
+  {
+   "fieldname": "actions_taken_to_resolve",
+   "fieldtype": "Text",
+   "label": "Actions Taken To Resolve"
+  },
+  {
+   "fieldname": "general_notes",
+   "fieldtype": "Text",
+   "label": "General Notes"
+  },
+  {
+   "default": "Non-Recurring",
+   "fieldname": "maintenance_intervals",
+   "fieldtype": "Select",
+   "label": "Maintenance Intervals",
+   "options": "Non-Recurring\nRecurring"
+  },
+  {
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "maintenance_work_request",
+   "fieldtype": "Link",
+   "label": "Maintenance Work Request",
+   "options": "Maintenance Work Request"
+  },
+  {
+   "fieldname": "column_break",
+   "fieldtype": "Column Break"
   }
  ],
  "is_submittable": 1,
- "modified": "2021-12-24 12:19:11.612350",
+ "max_attachments": 1,
+ "modified": "2021-12-27 17:20:16.362786",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "Maintenance Work Order",
@@ -155,6 +267,20 @@
    "read": 1,
    "report": 1,
    "role": "Maintenance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
    "share": 1,
    "submit": 1,
    "write": 1

@@ -8,6 +8,7 @@ def get_data():
 			"module_name": "My Custom Maintenance",
 			"category": "Modules",
 			"color": "labc9c",
+			#"icon": "assets/my_custom_maintenance/images/SHRDC.svg",
 			"icon": "fa fa-cogs",
 			"type": "module",
 			"label": _("SHRDC CMMS"),

@@ -5,19 +5,21 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "workstation",
   "naming_series",
+  "operator",
+  "column_break_4",
+  "asset",
+  "location",
+  "timing_details_section",
+  "from_time",
+  "to_time",
+  "column_break_8",
+  "downtime",
+  "downtime_reason_section",
+  "stop_reason",
   "amended_from"
  ],
  "fields": [
-  {
-   "fieldname": "workstation",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Faulty Workstation",
-   "options": "Workstation",
-   "reqd": 1
-  },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
@@ -34,10 +36,74 @@
    "options": "Downtime Tracking",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "operator",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Operator",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Workstation / Machine",
+   "options": "Asset",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "asset.location",
+   "fieldname": "location",
+   "fieldtype": "Read Only",
+   "label": "Location"
+  },
+  {
+   "fieldname": "timing_details_section",
+   "fieldtype": "Section Break",
+   "label": "Timing Details"
+  },
+  {
+   "default": "now",
+   "fieldname": "from_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "From Time"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_time",
+   "fieldtype": "Datetime",
+   "label": "To Time"
+  },
+  {
+   "fetch_from": "downtime_tracking.downtime",
+   "fieldname": "downtime",
+   "fieldtype": "Read Only",
+   "label": "Downtime (in mins)"
+  },
+  {
+   "fieldname": "downtime_reason_section",
+   "fieldtype": "Section Break",
+   "label": "Downtime Reason"
+  },
+  {
+   "fieldname": "stop_reason",
+   "fieldtype": "Select",
+   "label": "Stop Reason",
+   "options": "\nMachine malfunction\nElectricity down",
+   "reqd": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2021-12-17 16:29:22.007100",
+ "modified": "2021-12-27 15:30:12.478336",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "Downtime Tracking",
@@ -84,9 +150,20 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 1
   }
  ],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

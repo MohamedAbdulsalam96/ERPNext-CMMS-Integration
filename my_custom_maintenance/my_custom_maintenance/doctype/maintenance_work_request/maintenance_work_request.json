@@ -1,0 +1,214 @@
+{
+ "allow_auto_repeat": 1,
+ "allow_events_in_timeline": 1,
+ "autoname": "naming_series:",
+ "creation": "2021-12-24 18:03:20.819177",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "asset",
+  "location",
+  "status",
+  "column_break_9",
+  "request_type",
+  "request_priority",
+  "raised_by",
+  "created_on",
+  "section_break_9",
+  "description",
+  "reason_for_rejection",
+  "reason_for_cancellation",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "MWR-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Workstation / Machine",
+   "options": "Asset",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "asset.location",
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Location of workstation",
+   "options": "Location",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "default": "Pending Approval from Maintenance Manager",
+   "fieldname": "status",
+   "fieldtype": "Read Only",
+   "label": "Status"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "request_type",
+   "fieldtype": "Select",
+   "label": "Request type",
+   "options": "\nCommissioning\nRepair\nCalibration\nMaintenance\nRetirement",
+   "reqd": 1
+  },
+  {
+   "default": "Low",
+   "fieldname": "request_priority",
+   "fieldtype": "Select",
+   "label": "Request priority",
+   "options": "Low\nMedium\nHigh",
+   "reqd": 1
+  },
+  {
+   "fieldname": "raised_by",
+   "fieldtype": "Link",
+   "label": "Raised by",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "default": "now",
+   "fieldname": "created_on",
+   "fieldtype": "Datetime",
+   "label": "Created on",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Maintenance Work Request",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "reason_for_rejection",
+   "fieldtype": "Small Text",
+   "label": "Reason for Rejection (If Applicable)"
+  },
+  {
+   "fieldname": "reason_for_cancellation",
+   "fieldtype": "Small Text",
+   "label": "Reason for Cancellation (If Applicable)"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-12-27 17:32:03.312189",
+ "modified_by": "Administrator",
+ "module": "My Custom Maintenance",
+ "name": "Maintenance Work Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Manufacturing User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Manufacturing Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

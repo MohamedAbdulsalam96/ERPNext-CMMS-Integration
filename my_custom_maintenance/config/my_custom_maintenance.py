@@ -4,7 +4,7 @@ from frappe import _
 def get_data():
     config = [
 		{
-            "label": _("Downtime Tracking"),
+            "label": _("Downtime"),
             "items":[
                 {
                     "type": "doctype",
@@ -16,6 +16,11 @@ def get_data():
 		{
             "label": _("Maintenance"),
             "items":[
+                {
+                    "type": "doctype",
+                    "name": "Maintenance Work Request",
+                    "onboard": 1
+                },
                 {
                     "type": "doctype",
                     "name": "Maintenance Work Order",
