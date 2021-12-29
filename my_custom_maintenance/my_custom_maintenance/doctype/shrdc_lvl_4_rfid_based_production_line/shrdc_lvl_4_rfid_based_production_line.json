@@ -1,0 +1,93 @@
+{
+ "allow_events_in_timeline": 1,
+ "autoname": "naming_series:",
+ "creation": "2021-12-28 10:45:35.129310",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "asset",
+  "asset_name",
+  "column_break_3",
+  "location",
+  "machine_status",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "label": "Asset",
+   "options": "Asset"
+  },
+  {
+   "fetch_from": "asset.location",
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "machine_status",
+   "fieldtype": "Select",
+   "label": "Machine Status",
+   "options": "\nUp: Idle\nUp: Running\nDown: Waiting For Maintenance\nDown: Under Maintenance"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "MAC-STAT-.#####"
+  },
+  {
+   "fetch_from": "asset.asset_name",
+   "fieldname": "asset_name",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Asset Name"
+  },
+  {
+   "fetch_from": "machine_status",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Status"
+  }
+ ],
+ "modified": "2021-12-28 17:31:22.269879",
+ "modified_by": "Administrator",
+ "module": "My Custom Maintenance",
+ "name": "SHRDC Lvl 4 RFID Based Production Line",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

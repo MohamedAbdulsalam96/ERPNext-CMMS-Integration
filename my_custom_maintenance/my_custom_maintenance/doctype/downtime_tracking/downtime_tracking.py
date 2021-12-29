@@ -3,11 +3,11 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
-# import frappe
+import frappe
 from frappe.model.document import Document
 from frappe.utils import time_diff_in_hours
 
 class DowntimeTracking(Document):
-	def validate(self):
-		if self.from_time and self.to_time:
-			self.downtime = time_diff_in_hours(self.to_time. self.from_time) * 60
+	@frappe.whitelist()
+	def calc_time_diff(self, to_time, from_time):
+		return time_diff_in_hours(to_time, from_time) * 60

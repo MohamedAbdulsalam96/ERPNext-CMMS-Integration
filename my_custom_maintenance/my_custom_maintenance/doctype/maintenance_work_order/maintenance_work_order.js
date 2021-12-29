@@ -2,7 +2,56 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Maintenance Work Order', {
-	// refresh: function(frm) {
 
-	// }
+	// <Value of status field> (<docstatus>)
+	// Open (0)
+	// Work In Progress (0)
+	// On Hold (0)
+	// Completed, Pending Approval from Maintenance Manager (0)
+	// Closed (1)
+	// Cancelled (2)
+	//
+	// Update the machine status accordingly. Possible machine status are:
+	// Up: Idle
+	// Up: Running
+	// Down: Waiting For Maintenance
+	// Down: Under Maintenance
+	refresh: function(frm) {
+		if (frm.doc.status != "Open" && frm.doc.docstatus == 0) {
+			// machine under maintenance
+			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 1 });
+
+			// frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 1 }).then(r => {
+			// 	frappe.ui.form.on('SHRDC Lvl 4 RFID Based Production Line', {
+			// 		refresh: function(frm) {
+			// 			location.reload();
+			// 		}
+			// 	});
+			// });
+		}
+
+		if (frm.doc.docstatus == 1) {
+			// machine ready to operate
+			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 2 });
+		}
+
+		// When status = 'Work In Progress', auto populate Actual Start Date
+		if (frm.doc.status == "Work In Progress" && !frm.doc.actual_start_date) {
+			frm.set_value('actual_start_date', frappe.datetime.now_datetime());
+			frm.save();
+		}
+
+		// When status = 'Completed, Pending Approval from Maintenance Manager', auto populate Actual Complete Date
+		if (frm.doc.status == "Completed, Pending Approval from Maintenance Manager" && !frm.doc.actual_complete_date) {
+			frm.set_value('actual_complete_date', frappe.datetime.now_datetime());
+			frm.save();
+		}
+
+		// When status = 'Closed', auto populate Closed Date
+		if (frm.doc.docstatus == 1 && !frm.doc.closed_date) {			
+			frm.call('populate_closed_date',{ mwo_id: frm.doc.name }).then(r => {
+				frm.reload_doc();
+			});
+		}
+	},
 });

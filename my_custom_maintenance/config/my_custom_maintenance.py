@@ -4,6 +4,16 @@ from frappe import _
 def get_data():
     config = [
 		{
+            "label": _("Machine Status"),
+            "items":[
+                {
+                    "type": "doctype",
+                    "name": "SHRDC Lvl 4 RFID Based Production Line",
+                    "onboard": 1
+                }
+            ]
+		},
+		{
             "label": _("Downtime"),
             "items":[
                 {
