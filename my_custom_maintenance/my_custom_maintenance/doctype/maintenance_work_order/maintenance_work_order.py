@@ -25,6 +25,12 @@ class MaintenanceWorkOrder(Document):
 			# mac_stat.update({'machine_status': 'Up: Idle'})
 			# mac_stat.machine_status = "Up: Idle"
 			mac_stat.db_set('machine_status', 'Up: Idle', commit=True)
+
+		elif opt==3:
+			mac_stat.db_set('machine_status', 'Down: Waiting For Maintenance', commit=True)
+
+		elif opt==4:
+			mac_stat.db_set('machine_status', 'Down: Post Inspection', commit=True)
 			
 		mac_stat.save()
 		# mac_stat.save(ignore_permissions=True)

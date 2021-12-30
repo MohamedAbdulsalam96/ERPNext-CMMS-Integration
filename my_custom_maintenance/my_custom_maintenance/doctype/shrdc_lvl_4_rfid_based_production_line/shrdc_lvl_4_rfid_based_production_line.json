@@ -9,6 +9,7 @@
   "naming_series",
   "asset",
   "asset_name",
+  "workstation",
   "column_break_3",
   "location",
   "machine_status",
@@ -37,7 +38,7 @@
    "fieldname": "machine_status",
    "fieldtype": "Select",
    "label": "Machine Status",
-   "options": "\nUp: Idle\nUp: Running\nDown: Waiting For Maintenance\nDown: Under Maintenance"
+   "options": "\nUp: Idle\nUp: Running\nDown: Scheduling Maintenance\nDown: Waiting For Maintenance\nDown: Under Maintenance\nDown: Post Inspection"
   },
   {
    "fieldname": "naming_series",
@@ -57,9 +58,15 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Status"
+  },
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "label": "Workstation",
+   "options": "Workstation"
   }
  ],
- "modified": "2021-12-28 17:31:22.269879",
+ "modified": "2021-12-30 11:16:49.715527",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "SHRDC Lvl 4 RFID Based Production Line",

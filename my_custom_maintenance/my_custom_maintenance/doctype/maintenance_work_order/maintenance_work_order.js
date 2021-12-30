@@ -14,10 +14,17 @@ frappe.ui.form.on('Maintenance Work Order', {
 	// Update the machine status accordingly. Possible machine status are:
 	// Up: Idle
 	// Up: Running
+	// Down: Scheduling Maintenance
 	// Down: Waiting For Maintenance
 	// Down: Under Maintenance
+	// Down: Post Inspection
 	refresh: function(frm) {
-		if (frm.doc.status != "Open" && frm.doc.docstatus == 0) {
+		if (frm.doc.status == "Open" && frm.doc.docstatus == 0) {
+			// machine maintenance has been scheduled, waiting for maintenance
+			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 3 });
+		}
+
+		if (frm.doc.status == "Work In Progress" && frm.doc.docstatus == 0) {
 			// machine under maintenance
 			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 1 });
 
@@ -28,6 +35,11 @@ frappe.ui.form.on('Maintenance Work Order', {
 			// 		}
 			// 	});
 			// });
+		}
+
+		if (frm.doc.status == "Completed, Pending Approval from Maintenance Manager" && frm.doc.docstatus == 0) {
+			// machine maintenance completed, waiting for Maintenance Manager's Post Inspection
+			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 4 });
 		}
 
 		if (frm.doc.docstatus == 1) {
