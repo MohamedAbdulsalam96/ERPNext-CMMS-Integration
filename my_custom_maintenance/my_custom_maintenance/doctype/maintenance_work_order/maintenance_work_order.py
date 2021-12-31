@@ -12,8 +12,8 @@ class MaintenanceWorkOrder(Document):
 	@frappe.whitelist()
 	def update_machine_status(self, mwo_id, opt):
 		mwo = frappe.get_doc("Maintenance Work Order", mwo_id)		
-		mac_stat_list = frappe.db.get_list('SHRDC Lvl 4 RFID Based Production Line', filters={'asset': mwo.asset})
-		mac_stat = frappe.get_doc('SHRDC Lvl 4 RFID Based Production Line', mac_stat_list[0])
+		mac_stat_list = frappe.db.get_list('Machine Status', filters={'asset': mwo.asset})
+		mac_stat = frappe.get_doc('Machine Status', mac_stat_list[0])
 
 		if opt==1:
 			# mac_stat.update({'machine_status': 'Down: Under Maintenance'})

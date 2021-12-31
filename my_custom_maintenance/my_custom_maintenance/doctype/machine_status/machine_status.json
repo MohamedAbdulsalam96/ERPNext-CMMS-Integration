@@ -9,10 +9,18 @@
   "naming_series",
   "asset",
   "asset_name",
-  "workstation",
   "column_break_3",
+  "workstation",
   "location",
+  "section_break_7",
   "machine_status",
+  "availability",
+  "performance",
+  "column_break_11",
+  "oee",
+  "pass_rate",
+  "status_source_section",
+  "source",
   "status"
  ],
  "fields": [
@@ -64,12 +72,57 @@
    "fieldtype": "Link",
    "label": "Workstation",
    "options": "Workstation"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "availability",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Availability"
+  },
+  {
+   "fieldname": "performance",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Performance"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "oee",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "OEE"
+  },
+  {
+   "fieldname": "pass_rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Pass Rate"
+  },
+  {
+   "fieldname": "status_source_section",
+   "fieldtype": "Section Break",
+   "label": "Status Source"
+  },
+  {
+   "default": "ERPNext",
+   "description": "Sync from ERPNext or Node-RED.",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "ERPNext\nNode-RED"
   }
  ],
- "modified": "2021-12-30 11:16:49.715527",
+ "modified": "2021-12-31 12:17:21.740746",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
- "name": "SHRDC Lvl 4 RFID Based Production Line",
+ "name": "Machine Status",
  "owner": "Administrator",
  "permissions": [
   {

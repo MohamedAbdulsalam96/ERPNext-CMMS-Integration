@@ -10,13 +10,17 @@
   "naming_series",
   "asset",
   "location",
+  "workstation",
   "status",
   "column_break_9",
   "request_type",
   "request_priority",
   "raised_by",
   "created_on",
+  "automation_section",
+  "auto_update_machine_status",
   "section_break_9",
+  "downtime_tracking",
   "description",
   "reason_for_rejection",
   "reason_for_cancellation",
@@ -35,7 +39,7 @@
    "fieldname": "asset",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Workstation / Machine",
+   "label": "Asset",
    "options": "Asset",
    "reqd": 1
   },
@@ -72,15 +76,13 @@
    "fieldname": "request_priority",
    "fieldtype": "Select",
    "label": "Request priority",
-   "options": "Low\nMedium\nHigh",
-   "reqd": 1
+   "options": "Low\nMedium\nHigh"
   },
   {
    "fieldname": "raised_by",
    "fieldtype": "Link",
    "label": "Raised by",
-   "options": "User",
-   "reqd": 1
+   "options": "User"
   },
   {
    "default": "now",
@@ -91,7 +93,8 @@
   },
   {
    "fieldname": "section_break_9",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Reference"
   },
   {
    "fieldname": "description",
@@ -116,10 +119,33 @@
    "fieldname": "reason_for_cancellation",
    "fieldtype": "Small Text",
    "label": "Reason for Cancellation (If Applicable)"
+  },
+  {
+   "fieldname": "downtime_tracking",
+   "fieldtype": "Link",
+   "label": "Downtime Tracking",
+   "options": "Downtime Tracking"
+  },
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "label": "Workstation",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "automation_section",
+   "fieldtype": "Section Break",
+   "label": "Automation"
+  },
+  {
+   "default": "1",
+   "fieldname": "auto_update_machine_status",
+   "fieldtype": "Check",
+   "label": "Auto Update Machine Status"
   }
  ],
  "is_submittable": 1,
- "modified": "2021-12-27 17:32:03.312189",
+ "modified": "2021-12-31 10:34:14.431446",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "Maintenance Work Request",

@@ -6,5 +6,5 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
-class SHRDCLvl4RFIDBasedProductionLine(Document):
+class MachineStatus(Document):
 	pass

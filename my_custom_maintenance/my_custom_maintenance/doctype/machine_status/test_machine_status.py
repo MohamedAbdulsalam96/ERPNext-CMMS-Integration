@@ -6,5 +6,5 @@ from __future__ import unicode_literals
 # import frappe
 import unittest
 
-class TestSHRDCLvl4RFIDBasedProductionLine(unittest.TestCase):
+class TestMachineStatus(unittest.TestCase):
 	pass

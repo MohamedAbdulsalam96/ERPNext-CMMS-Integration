@@ -1,4 +1,4 @@
-frappe.listview_settings['SHRDC Lvl 4 RFID Based Production Line'] = {
+frappe.listview_settings['Machine Status'] = {
 	
 	add_fields: ['machine_status'],
 

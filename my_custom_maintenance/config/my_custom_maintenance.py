@@ -8,7 +8,7 @@ def get_data():
             "items":[
                 {
                     "type": "doctype",
-                    "name": "SHRDC Lvl 4 RFID Based Production Line",
+                    "name": "Machine Status",
                     "onboard": 1
                 }
             ]

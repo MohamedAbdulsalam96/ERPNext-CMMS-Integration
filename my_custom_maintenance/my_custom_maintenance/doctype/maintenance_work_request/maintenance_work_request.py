@@ -19,6 +19,7 @@ class MaintenanceWorkRequest(Document):
 			'raised_by': mwr.raised_by,
 			'maintenance_type': mwr.request_type,
 			'maintenance_priority': mwr.request_priority,
+			'workstation': mwr.workstation,
 			'maintenance_work_request': mwr.name
 			})
 

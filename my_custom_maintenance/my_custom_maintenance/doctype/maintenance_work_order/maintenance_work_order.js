@@ -19,30 +19,22 @@ frappe.ui.form.on('Maintenance Work Order', {
 	// Down: Under Maintenance
 	// Down: Post Inspection
 	refresh: function(frm) {
-		if (frm.doc.status == "Open" && frm.doc.docstatus == 0) {
+		if (frm.doc.status == "Open" && frm.doc.docstatus == 0 && frm.doc.planned_start_date && frm.doc.planned_complete_date && frm.doc.auto_update_machine_status) {
 			// machine maintenance has been scheduled, waiting for maintenance
 			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 3 });
 		}
 
-		if (frm.doc.status == "Work In Progress" && frm.doc.docstatus == 0) {
+		if (frm.doc.status == "Work In Progress" && frm.doc.docstatus == 0 && frm.doc.auto_update_machine_status) {
 			// machine under maintenance
 			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 1 });
-
-			// frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 1 }).then(r => {
-			// 	frappe.ui.form.on('SHRDC Lvl 4 RFID Based Production Line', {
-			// 		refresh: function(frm) {
-			// 			location.reload();
-			// 		}
-			// 	});
-			// });
 		}
 
-		if (frm.doc.status == "Completed, Pending Approval from Maintenance Manager" && frm.doc.docstatus == 0) {
+		if (frm.doc.status == "Completed, Pending Approval from Maintenance Manager" && frm.doc.docstatus == 0 && frm.doc.auto_update_machine_status) {
 			// machine maintenance completed, waiting for Maintenance Manager's Post Inspection
 			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 4 });
 		}
 
-		if (frm.doc.docstatus == 1) {
+		if (frm.doc.docstatus == 1 && frm.doc.auto_update_machine_status) {
 			// machine ready to operate
 			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 2 });
 		}
