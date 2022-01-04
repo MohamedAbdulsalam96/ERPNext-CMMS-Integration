@@ -3,6 +3,17 @@ from frappe import _
 
 def get_data():
     config = [
+        {
+            "label": _("Dashboard"),
+            "items":[
+                {
+                    "type": "page",
+                    "name": "test-page",
+                    "label": _("MES Dashboard"),
+                    "onboard": 1
+                }
+            ]
+		},
 		{
             "label": _("Machine Status"),
             "items":[

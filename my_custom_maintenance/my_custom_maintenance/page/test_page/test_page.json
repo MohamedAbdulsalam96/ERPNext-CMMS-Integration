@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2022-01-04 11:45:07.989084",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2022-01-04 11:45:07.989084",
+ "modified_by": "Administrator",
+ "module": "My Custom Maintenance",
+ "name": "test-page",
+ "owner": "Administrator",
+ "page_name": "test-page",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "MES Dashboard"
+}
