@@ -26,6 +26,7 @@
   "column_break_15",
   "maintenance_intervals",
   "assign_to",
+  "assignee_notified",
   "section_break_12",
   "created_on",
   "planned_start_date",
@@ -34,6 +35,7 @@
   "planned_complete_date",
   "actual_complete_date",
   "closed_date",
+  "starting_downtime",
   "parts_and_tooling_section",
   "parts_required",
   "column_break",
@@ -251,11 +253,23 @@
    "fieldname": "auto_update_machine_status",
    "fieldtype": "Check",
    "label": "Auto Update Machine Status"
+  },
+  {
+   "default": "No",
+   "description": "Technician in 'Assign To' will be notified through Telegram upon saving this document.",
+   "fieldname": "assignee_notified",
+   "fieldtype": "Read Only",
+   "label": "Assignee Notified"
+  },
+  {
+   "fieldname": "starting_downtime",
+   "fieldtype": "Datetime",
+   "label": "Starting Downtime"
   }
  ],
  "is_submittable": 1,
  "max_attachments": 1,
- "modified": "2021-12-31 10:40:06.358368",
+ "modified": "2022-01-04 10:59:12.941133",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "Maintenance Work Order",

@@ -22,6 +22,7 @@ frappe.ui.form.on('Maintenance Work Order', {
 		if (frm.doc.status == "Open" && frm.doc.docstatus == 0 && frm.doc.planned_start_date && frm.doc.planned_complete_date && frm.doc.auto_update_machine_status) {
 			// machine maintenance has been scheduled, waiting for maintenance
 			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 3 });
+			// frm.refresh_fields('assignee_notified');
 		}
 
 		if (frm.doc.status == "Work In Progress" && frm.doc.docstatus == 0 && frm.doc.auto_update_machine_status) {
@@ -57,5 +58,13 @@ frappe.ui.form.on('Maintenance Work Order', {
 				frm.reload_doc();
 			});
 		}
+	},
+
+	after_save: function(frm) {
+		console.log('ran');
+		// frm.refresh();
+		// frm.refresh_field('assignee_notified');
+		// cur_frm.reload_doc();
+		window.location.reload();
 	},
 });
