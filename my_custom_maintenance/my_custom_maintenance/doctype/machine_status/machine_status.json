@@ -19,7 +19,8 @@
   "column_break_11",
   "oee",
   "pass_rate",
-  "status_source_section",
+  "synchronization_section",
+  "sync_with_nr",
   "source",
   "status"
  ],
@@ -106,20 +107,28 @@
    "label": "Pass Rate"
   },
   {
-   "fieldname": "status_source_section",
-   "fieldtype": "Section Break",
-   "label": "Status Source"
-  },
-  {
    "default": "ERPNext",
    "description": "Sync from ERPNext or Node-RED.",
    "fieldname": "source",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Source",
    "options": "ERPNext\nNode-RED"
+  },
+  {
+   "fieldname": "synchronization_section",
+   "fieldtype": "Section Break",
+   "label": "Synchronization"
+  },
+  {
+   "default": "0",
+   "description": "Machine status will be synchronized with Node-RED via Server Script API.\nName your Server Script API as \"Mac Stat From NR To ERPNext\"",
+   "fieldname": "sync_with_nr",
+   "fieldtype": "Check",
+   "label": "Sync with Node-RED"
   }
  ],
- "modified": "2022-01-05 15:48:58.416672",
+ "modified": "2022-01-07 10:13:10.180775",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "Machine Status",
