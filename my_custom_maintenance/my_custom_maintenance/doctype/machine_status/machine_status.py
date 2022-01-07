@@ -15,3 +15,21 @@ class MachineStatus(Document):
 			return "API exists"
 		else:
 			return "API not found"
+
+	# disable the API once user decide to NOT sync with Node-RED
+	@frappe.whitelist()
+	def disable_API(self):
+		ssapi = frappe.get_doc('Server Script', "Mac Stat From NR To ERPNext")
+		# ssapi.reload()
+		ssapi.db_set('disabled', 1, commit=True)
+		ssapi.save(ignore_version=True)
+		ssapi.reload()
+
+	# @frappe.whitelist()
+	# def update_sync_with_nr_flag(self, ms_id, new_value):
+	# 	# ms = frappe.get_doc('Machine Status', ms_id)
+	# 	# ms.reload()
+	# 	# ms.sync_with_nr = new_value
+	# 	# ms.db_set('sync_with_nr', new_value)
+	# 	# ms.save()
+	# 	# ms.reload()

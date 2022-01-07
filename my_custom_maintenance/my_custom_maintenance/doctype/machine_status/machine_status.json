@@ -122,13 +122,13 @@
   },
   {
    "default": "0",
-   "description": "Machine status will be synchronized with Node-RED via Server Script API.\nName your Server Script API as \"Mac Stat From NR To ERPNext\"",
+   "description": "If enabled, Node-RED can update machine status to ERPNext via a Server Script API.\n\nName your Server Script API as \"Mac Stat From NR To ERPNext\".\n\nTo uncheck this field, the Node-RED toggle has to be in the OFF state.",
    "fieldname": "sync_with_nr",
    "fieldtype": "Check",
-   "label": "Sync with Node-RED"
+   "label": "Enable Node-RED Synchronization"
   }
  ],
- "modified": "2022-01-07 10:13:10.180775",
+ "modified": "2022-01-07 15:31:16.111753",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "Machine Status",
