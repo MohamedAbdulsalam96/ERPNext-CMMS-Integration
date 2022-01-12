@@ -17,6 +17,7 @@
   "availability",
   "performance",
   "column_break_11",
+  "log_machine_status",
   "oee",
   "pass_rate",
   "synchronization_section",
@@ -126,9 +127,16 @@
    "fieldname": "sync_with_nr",
    "fieldtype": "Check",
    "label": "Enable Node-RED Synchronization"
+  },
+  {
+   "default": "1",
+   "description": "If checked, machine status log will be created upon changes of machine status.",
+   "fieldname": "log_machine_status",
+   "fieldtype": "Check",
+   "label": "Log machine status"
   }
  ],
- "modified": "2022-01-07 15:31:16.111753",
+ "modified": "2022-01-12 14:36:57.899492",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
  "name": "Machine Status",

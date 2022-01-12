@@ -26,6 +26,30 @@ class MachineStatus(Document):
 		ssapi.reload()
 
 	# @frappe.whitelist()
+	def get_previous_mac_stat(self, ms_id):
+		ms = frappe.get_doc('Machine Status', ms_id)
+		return ms.machine_status
+
+	# @frappe.whitelist()
+	# def create_new_mac_stat_log(self, ms_id, new_mac_stat):
+	# 	ms = frappe.get_doc('Machine Status', ms_id)
+	# 	msl = frappe.new_doc('Machine Status Log')
+		
+	# 	msl.update({
+	# 		'machine_status': ms.name,
+	# 		'asset': ms.asset,
+	# 		'workstation': ms.workstation,
+	# 		'current_time': frappe.utils.get_datetime(),
+	# 		'current_machine_status': new_mac_stat,
+	# 		'docstatus': 1
+	# 	})
+		
+	# 	msl.insert()
+	# 	# msl.docstatus = 1
+	# 	# msl.save()
+
+
+	# @frappe.whitelist()
 	# def update_sync_with_nr_flag(self, ms_id, new_value):
 	# 	# ms = frappe.get_doc('Machine Status', ms_id)
 	# 	# ms.reload()
@@ -33,3 +57,21 @@ class MachineStatus(Document):
 	# 	# ms.db_set('sync_with_nr', new_value)
 	# 	# ms.save()
 	# 	# ms.reload()
+
+@frappe.whitelist()
+def create_new_mac_stat_log(ms_id, new_mac_stat):
+	ms = frappe.get_doc('Machine Status', ms_id)
+	msl = frappe.new_doc('Machine Status Log')
+	
+	msl.update({
+		'machine_status': ms.name,
+		'asset': ms.asset,
+		'workstation': ms.workstation,
+		'current_time': frappe.utils.get_datetime(),
+		'current_machine_status': new_mac_stat,
+		'docstatus': 1
+	})
+	
+	msl.insert()
+	# msl.docstatus = 1
+	# msl.save()

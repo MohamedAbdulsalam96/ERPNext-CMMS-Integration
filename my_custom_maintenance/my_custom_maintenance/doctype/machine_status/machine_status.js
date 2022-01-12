@@ -53,4 +53,20 @@ frappe.ui.form.on('Machine Status', {
 			}
 		}
 	},
+
+	// before saving, check if mahcine status has changes
+	validate: function (frm) {
+		if (frm.doc.log_machine_status) {	// machine status logging checkbox checked
+
+			frm.call('get_previous_mac_stat', {ms_id: frm.doc.name}).then(r => {
+				let previous_mac_stat = r.message;
+
+				if (previous_mac_stat != frm.doc.machine_status) {
+					// machine status has changed, create a new Machine Status Log
+					console.log("inside if frm New mac stat: " + frm.doc.machine_status);
+					frappe.call('my_custom_maintenance.my_custom_maintenance.doctype.machine_status.machine_status.create_new_mac_stat_log', {ms_id: frm.doc.name, new_mac_stat: frm.doc.machine_status});
+				}
+			})
+		}
+	},
 });

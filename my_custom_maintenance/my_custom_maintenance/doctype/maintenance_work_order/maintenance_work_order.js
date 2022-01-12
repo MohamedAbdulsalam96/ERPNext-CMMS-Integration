@@ -21,23 +21,42 @@ frappe.ui.form.on('Maintenance Work Order', {
 	refresh: function(frm) {
 		if (frm.doc.status == "Open" && frm.doc.docstatus == 0 && frm.doc.planned_start_date && frm.doc.planned_complete_date && frm.doc.auto_update_machine_status) {
 			// machine maintenance has been scheduled, waiting for maintenance
-			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 3 });
-			// frm.refresh_fields('assignee_notified');
+			frm.call('get_previous_mac_stat', {mwo_id: frm.doc.name}).then(r =>{
+				let previous_mac_stat = r.message;
+				if (previous_mac_stat != "Down: Waiting For Maintenance") {
+					frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 3 });
+				}
+			})
 		}
 
 		if (frm.doc.status == "Work In Progress" && frm.doc.docstatus == 0 && frm.doc.auto_update_machine_status) {
 			// machine under maintenance
-			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 1 });
+			frm.call('get_previous_mac_stat', {mwo_id: frm.doc.name}).then(r => {
+				let previous_mac_stat = r.message;
+				if (previous_mac_stat != "Down: Under Maintenance") {
+					frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 1 });
+				}
+			})
 		}
 
 		if (frm.doc.status == "Completed, Pending Approval from Maintenance Manager" && frm.doc.docstatus == 0 && frm.doc.auto_update_machine_status) {
 			// machine maintenance completed, waiting for Maintenance Manager's Post Inspection
-			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 4 });
+			frm.call('get_previous_mac_stat', {mwo_id: frm.doc.name}).then(r => {
+				let previous_mac_stat = r.message;
+				if (previous_mac_stat != "Down: Post Inspection") {
+					frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 4 });
+				}
+			})
 		}
 
 		if (frm.doc.docstatus == 1 && frm.doc.auto_update_machine_status) {
 			// machine ready to operate
-			frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 2 });
+			frm.call('get_previous_mac_stat', {mwo_id: frm.doc.name}).then(r => {
+				let previous_mac_stat = r.message;
+				if (previous_mac_stat != "Up: Idle") {
+					frm.call('update_machine_status',{ mwo_id: frm.doc.name, opt: 2 });
+				}
+			})
 		}
 
 		// When status = 'Work In Progress', auto populate Actual Start Date
@@ -61,10 +80,6 @@ frappe.ui.form.on('Maintenance Work Order', {
 	},
 
 	after_save: function(frm) {
-		console.log('ran');
-		// frm.refresh();
-		// frm.refresh_field('assignee_notified');
-		// cur_frm.reload_doc();
 		window.location.reload();
 	},
 });

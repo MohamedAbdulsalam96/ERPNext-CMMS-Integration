@@ -50,3 +50,19 @@ class DowntimeTracking(Document):
 		# frappe.db.commit()
 		# mac_stat.reload()
 		# return True
+	
+	# @frappe.whitelist()
+	# def cjs(self):
+	# 	ms = frappe.get_doc("Machine Status", "MAC-STAT-00005")
+	# 	doc = frappe.new_doc("Downtime Tracking")
+	# 	doc.update({
+	# 		'from_time': frappe.utils.get_datetime(),
+    #    		'workstation': ms.workstation,
+    #    		'asset': ms.asset,
+    #    		'stop_reason': "Machine malfunction",
+    #    		'auto_update_machine_status': 1
+	# 	})
+	# 	doc.flags.igore_mandatory = True
+	# 	doc.insert()
+	# 	print("Ran cjs")
+	# 	return doc

@@ -1,0 +1,127 @@
+{
+ "autoname": "format:MSL-{workstation}-{######}",
+ "creation": "2022-01-12 14:20:03.677352",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "reference_section",
+  "machine_status",
+  "details_section",
+  "asset",
+  "workstation",
+  "column_break_6",
+  "current_time",
+  "current_machine_status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "machine_status",
+   "fieldtype": "Link",
+   "label": "Machine Status",
+   "options": "Machine Status"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fetch_from": "machine_status.asset",
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "label": "Asset",
+   "options": "Asset"
+  },
+  {
+   "fetch_from": "machine_status.workstation",
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "label": "Workstation",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "now",
+   "fieldname": "current_time",
+   "fieldtype": "Datetime",
+   "label": "Current time"
+  },
+  {
+   "fetch_from": "machine_status.machine_status",
+   "fetch_if_empty": 1,
+   "fieldname": "current_machine_status",
+   "fieldtype": "Data",
+   "label": "Current machine status"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Machine Status Log",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2022-01-12 15:40:05.066577",
+ "modified_by": "Administrator",
+ "module": "My Custom Maintenance",
+ "name": "Machine Status Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

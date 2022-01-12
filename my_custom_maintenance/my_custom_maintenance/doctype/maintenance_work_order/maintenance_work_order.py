@@ -7,6 +7,7 @@ import frappe
 from frappe.model.document import Document
 from frappe.desk.form import assign_to
 from frappe.utils import now
+from my_custom_maintenance.my_custom_maintenance.doctype.machine_status.machine_status import create_new_mac_stat_log
 
 class MaintenanceWorkOrder(Document):
 	@frappe.whitelist()
@@ -19,24 +20,24 @@ class MaintenanceWorkOrder(Document):
 			# mac_stat.update({'machine_status': 'Down: Under Maintenance'})
 			# mac_stat.machine_status = "Down: Under Maintenance"
 			mac_stat.db_set('machine_status', 'Down: Under Maintenance', commit=True)
+			create_new_mac_stat_log(mac_stat.name, "Down: Under Maintenance")
 
 		elif opt==2:
 		# else:
 			# mac_stat.update({'machine_status': 'Up: Idle'})
 			# mac_stat.machine_status = "Up: Idle"
 			mac_stat.db_set('machine_status', 'Up: Idle', commit=True)
+			create_new_mac_stat_log(mac_stat.name, "Up: Idle")
 
 		elif opt==3:
 			mac_stat.db_set('machine_status', 'Down: Waiting For Maintenance', commit=True)
+			create_new_mac_stat_log(mac_stat.name, "Down: Waiting For Maintenance")
 
 		elif opt==4:
 			mac_stat.db_set('machine_status', 'Down: Post Inspection', commit=True)
+			create_new_mac_stat_log(mac_stat.name, "Down: Post Inspection")
 			
 		mac_stat.save()
-		# mac_stat.save(ignore_permissions=True)
-		# frappe.db.commit()
-		# mac_stat.reload()
-		# return True
 	
 	@frappe.whitelist()
 	def populate_closed_date(self, mwo_id):
@@ -61,3 +62,9 @@ class MaintenanceWorkOrder(Document):
 				where reference_type=%(doctype)s and reference_name=%(name)s and status="Open"
 				and owner=%(assign_to)s""", args):
 				assign_to.add(args)
+	
+	def get_previous_mac_stat(self, mwo_id):
+		mwo = frappe.get_doc('Maintenance Work Order', mwo_id)
+		mac_stat_list = frappe.db.get_list('Machine Status', filters={'asset': mwo.asset})
+		ms = frappe.get_doc('Machine Status', mac_stat_list[0])
+		return ms.machine_status

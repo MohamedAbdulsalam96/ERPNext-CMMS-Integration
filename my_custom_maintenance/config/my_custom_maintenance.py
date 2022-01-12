@@ -21,6 +21,11 @@ def get_data():
                     "type": "doctype",
                     "name": "Machine Status",
                     "onboard": 1
+                },
+                {
+                    "type": "doctype",
+                    "name": "Machine Status Log",
+                    "onboard": 1
                 }
             ]
 		},
