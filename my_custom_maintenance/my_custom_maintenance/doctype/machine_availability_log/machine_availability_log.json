@@ -1,6 +1,6 @@
 {
- "autoname": "format:MSL-{workstation}-{######}",
- "creation": "2022-01-12 14:20:03.677352",
+ "autoname": "format:MAL-{workstation}-{######}",
+ "creation": "2022-01-14 13:58:56.446583",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -12,7 +12,7 @@
   "workstation",
   "column_break_6",
   "current_time",
-  "current_machine_status",
+  "current_availability",
   "amended_from"
  ],
  "fields": [
@@ -59,25 +59,25 @@
   {
    "fetch_from": "machine_status.machine_status",
    "fetch_if_empty": 1,
-   "fieldname": "current_machine_status",
-   "fieldtype": "Data",
-   "label": "Current machine status"
+   "fieldname": "current_availability",
+   "fieldtype": "Percent",
+   "label": "Current availability"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Machine Status Log",
+   "options": "Machine Availability Log",
    "print_hide": 1,
    "read_only": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2022-01-14 13:55:41.788105",
+ "modified": "2022-01-14 13:58:56.446583",
  "modified_by": "Administrator",
  "module": "My Custom Maintenance",
- "name": "Machine Status Log",
+ "name": "Machine Availability Log",
  "owner": "Administrator",
  "permissions": [
   {

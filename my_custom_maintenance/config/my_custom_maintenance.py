@@ -26,6 +26,16 @@ def get_data():
                     "type": "doctype",
                     "name": "Machine Status Log",
                     "onboard": 1
+                },
+                {
+                    "type": "doctype",
+                    "name": "Machine Availability Log",
+                    "onboard": 1
+                },
+                {
+                    "type": "doctype",
+                    "name": "Machine Performance Log",
+                    "onboard": 1
                 }
             ]
 		},

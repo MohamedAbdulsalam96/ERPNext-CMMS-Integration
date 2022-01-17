@@ -54,7 +54,7 @@ frappe.ui.form.on('Machine Status', {
 		}
 	},
 
-	// before saving, check if mahcine status has changes
+	// before saving, check if machine status has changes
 	validate: function (frm) {
 		if (frm.doc.log_machine_status) {	// machine status logging checkbox checked
 
