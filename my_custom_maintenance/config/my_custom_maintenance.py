@@ -15,7 +15,7 @@ def get_data():
         #     ]
 		# },
 		{
-            "label": _("Machine Status MODIFIED"),
+            "label": _("Machine Status"),
             "items":[
                 {
                     "type": "doctype",
